@@ -1,15 +1,13 @@
 {% set name = "empath" %}
 {% set version = "0.89" %}
-{% set sha256 = "91283d9b0233e0cb32c765b9f6274228d20dba9758fae1875e0fb83e4871c40b" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 91283d9b0233e0cb32c765b9f6274228d20dba9758fae1875e0fb83e4871c40b
 
 build:
   noarch: python
@@ -28,13 +26,17 @@ requirements:
 test:
   requires:
     - python {{ python_min }}
+    - pip
   imports:
     - empath
+  commands:
+    - pip check
 
 about:
   home: https://github.com/Ejhfast/empath-client
   license: MIT
   license_family: MIT
+  license_file: LICENSE.txt
   summary: 'analyze text with empath'
 
   description: |
